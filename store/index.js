@@ -1,31 +1,28 @@
-//import Vue from 'vue'
-//import Vuex from 'vuex'
-//import auth from './auth'
-import users from './users'
-//import roles from './roles'
-//import permisos from './permisos'
-// import loading from './loading'
-// import regiones from './regiones'
-// import departamentos from './departamentos'
-// import cargos from './cargos'
-// import alerta from './alerta'
-// import estadisticas from './estadisticas'
-// import createPersistedState from 'vuex-persistedstate'
+// Este sera nuestro almacenamiento central
+export const state = () => ({
+   
+});
 
-Vue.use(Vuex)
+// Accesores o getters
+// Normalmente se llaman desde las propiedas computed de los componentes
+export const getters = {
+   
+}
 
-export default new Vuex.Store({
-  modules: {
-    //auth,
-    users,
-    // roles,
-    // permisos,
-    // loading,
-    // regiones,
-    // departamentos,
-    // cargos,
-    // alerta,
-    // estadisticas
-  },
-  //plugins: [createPersistedState()],
-})
+// Acciones
+// Estas funciones o metodos sirven para llamar a las mutaciones
+// A diferencia de las mutaciones pueden ser asincornas (llamadas a las APIs)
+// Pueden contener algo de logica de negocio y ademas pueden llamar a varias mutaciones
+export const actions = {
+
+   async nuxtServerInit({ dispatch }, context) {
+        await dispatch('users/loadUsers')
+    }
+    
+}
+
+// Mutadores
+// El unico fin de los mutadores es mutar o modificar el state o almacenamiento
+export const mutations = {
+   
+}

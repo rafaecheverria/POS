@@ -1,21 +1,20 @@
 export const state = () => ({
-  _users: []
+  _users: {}
 })
 
 //Actions
-
 export const actions = {
   async loadUsers({ commit }){
-    let { data } = await this.$axios.get('https://therichpost.com/testjsonapi/users')
+    let  { data }  = await this.$axios.get('https://therichpost.com/testjsonapi/users/')
     console.log(data)
     commit('setUsers', data)
   }
 }
 
 //Getters
-export const getter = {
+export const getters = {
   getUsers(state){
-    state._users
+    return state._users
   }
 }
 

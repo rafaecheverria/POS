@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="sidebar" data-color="black">
-
       <BaseSidebar />
     </div>
 

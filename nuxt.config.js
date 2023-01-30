@@ -37,7 +37,7 @@ export default {
       { src: '/assets/js/plugins/bootstrap-tagsinput.js'},
       { src: '/assets/js/plugins/nouislider.js'},
       { src: '/assets/js/plugins/bootstrap-selectpicker.js'},
-      { src: '/assets/js/plugins/jquery.validate.min.js.js'},
+      //{ src: '/assets/js/plugins/jquery.validate.min.js.js'},
       { src: '/assets/js/plugins/jquery.bootstrap-wizard.js'},
       { src: '/assets/js/plugins/bootstrap-table.js'},
       { src: '/assets/js/plugins/jquery.dataTables.min.js'},
@@ -49,6 +49,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

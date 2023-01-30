@@ -10,7 +10,7 @@
       </div>
       <div class="user">
         <div class="photo">
-          <img src="assets/img/default-avatar.png" />
+          <img src="/assets/img/default-avatar.png" />
         </div>
         <div class="info">
           <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -44,13 +44,13 @@
         </div>
       </div>
       <ul class="nav">
-        <li class="nav-item active">
-          <div class="nav-link">
+        <li class="nav-item">
+          <nuxtLink  to="/" class="nav-link" data-toggle="collapse">
             <i class="nc-icon nc-chart-pie-35"></i>
-            <nuxtLink to="/">
-              <p>Panel</p>
-            </nuxtLink>
-          </div>
+            <p>
+              Panel
+            </p>
+          </nuxtLink>
         </li>
 
         <li class="nav-item">
@@ -213,7 +213,6 @@
             </ul>
           </div>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
             <i class="nc-icon nc-puzzle-10"></i>
@@ -270,7 +269,7 @@
 
             <ul class="nav">
               <li class="nav-item">
-                  <nuxtLink class="nav-link" to="marcas">
+                  <nuxtLink class="nav-link" to="/marcas">
                      <span class="sidebar-mini">MC</span>
                      <span class="sidebar-normal">Marcas</span>
                   </nuxtLink>
