@@ -19,9 +19,10 @@
 </template>
 <script>
 
+import { mapGetters } from 'vuex';
+
   export default{
     name: 'l-paginacion',
-
     props:['module', 'collection'],
 
     data () {
@@ -35,6 +36,11 @@
     },
 
     computed: {
+
+    ...mapGetters({
+      collecction: this.module+'/'+collection,
+      paginacion: this.module+'/getPaginacion',
+    }),
 
       isActived: function(){
         return this.$store.state[this.module].pagination.current_page
@@ -67,8 +73,14 @@
         cambiarPagina(page){
             this.$store.state[this.module].pagination.current_page = page;
             this.$store.dispatch(this.module+'/'+this.collection, this.$store.state[this.module].pagination.current_page);
-            this.$store.dispatch('loading/loading', this.load);
+           // this.$store.dispatch('loading/loading', this.load);
         },
     },
+
+    mounted(){
+        console.log("paginación")
+    }
   }
+
+
 </script>

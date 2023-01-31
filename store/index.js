@@ -15,9 +15,10 @@ export const getters = {
 // Pueden contener algo de logica de negocio y ademas pueden llamar a varias mutaciones
 export const actions = {
 
-   async nuxtServerInit({ dispatch }, context) {
+   /*async nuxtServerInit({ dispatch }, context) {
         await dispatch('users/loadUsers')
-    }
+        await dispatch('marcas/loadMarcas')
+    }*/
     
 }
 
@@ -26,3 +27,4 @@ export const actions = {
 export const mutations = {
    
 }
+
