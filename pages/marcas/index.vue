@@ -69,7 +69,7 @@
         >
           <div class=""></div>
           <div class="card-body">
-            <Paginacion class="pagination" module="marcas" collection="getMarcas" estado="marcas"/>
+            <Paginacion class="pagination" :module="modulo" funcion="loadMarcas" estado="marcas"/>
           </div>
         </div>
       </div>
@@ -81,12 +81,13 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
    mounted() {
-    this.loadMarcas(1);
+    this.loadMarcas(this.paginacion.current_page);
   },
   computed: {
     ...mapGetters({
       marcas: "marcas/getMarcas",
       paginacion: "marcas/getPaginacion",
+      modulo: "marcas/getModulo",
     }),
   },
   methods: {
@@ -98,7 +99,7 @@ export default {
 </script>
 
 <style>
-td {
-  font-size: 16px;
-}
+  td {
+    font-size: 16px;
+  }
 </style>

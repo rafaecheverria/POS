@@ -1,38 +1,48 @@
 export const state = () => ({
-    _marcas: [],
-    _modulo: 'marcas',
-    _pagination: {},
-    _buscar: ''
+    marcas: {},
+    modulo: 'marcas',
+    paginacion: {},
+    offset: 2,
+    buscar: ''
   })
   
   //Actions
   export const actions = {
-    async loadMarcas({ commit, state }, page) { // Obtiene todos los usuarios y los carga a la tabla
+    async loadMarcas({ commit, state }, page) { // Obtiene todas las marcas y los carga a la tabla
         let url = '/marcas?page='+ page + '&buscar='+ state.buscar
-        let    data   = await this.$api.get(url)
-      console.log(data)
-      commit('setMarcas', data.data)
-      commit('setPaginacion', data.data.pagination)
-    }
+        await this.$api.get(url)
+        .then((response) => {
+          commit('setMarcas', response.data.marcas.data)
+          commit('setPaginacion', response.data.pagination)
+        })
+        .catch(function(error){
+          console.log("se cerro la sesion")
+        })
+      },
+
+      cambiarPagina({ commit }, payload) {
+            commit('cambiarPagina', payload)
+      }
   }
   
   //Getters
   export const getters = {
-    getMarcas(state){
-      return state._marcas
-    },
-    getModulo(state){ return state._modulo },
-    getPaginacion(state){ return state._paginacion }
+    getMarcas(state){ return state.marcas },
+    getModulo(state){ return state.modulo },
+    getPaginacion(state){ return state.paginacion }
   }
 
   //Mutations
   export const mutations = {
     setMarcas(state, marcas){
-      state._marcas = marcas
+      state.marcas = marcas
     },
     setPaginacion(state, accion) {
-        state.pagination = accion
-      },
+      state.paginacion = accion
+    },
+    cambiarPagina: (state, payload) => {
+      state.paginacion.current_page = payload
+    }
   }
 
   
