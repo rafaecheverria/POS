@@ -9,7 +9,9 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-                <slot name="form"> </slot>
+                <slot name="form"> 
+                  <!-- Insertar el formulario desde las pages de la aplicación -->
+                </slot>
               </div>
               <div class="col-12">
                 <div class="row">

@@ -65,6 +65,10 @@ export default {
     return {
       modulo: this.module,
       loadFunction: this.module + "/" + this.funcion,
+      load: {
+            loading: true,
+            fullPage: false
+        }
     };
   },
 
@@ -105,17 +109,16 @@ export default {
         return [];
       },
       set(value) {
-        let obj = {value: value, modulo: this.modulo}
+        let obj = { value: value, modulo: this.modulo }
         this.$store.dispatch("cambiarPagina", obj)
       },
     },
   },
   methods: {
     cambiarPagina(payload) {
-      this.change = payload;
-      //this.$store.state[this.module].paginacion.current_page = page;
-      this.$store.dispatch(this.loadFunction,this.$store.state[this.module].paginacion.current_page);
-      // this.$store.dispatch('loading/loading', this.load);
+      this.change = payload; //Cambiar pagina
+      this.$store.dispatch(this.loadFunction,this.$store.state[this.module].paginacion.current_page); //Cargar datos de la tabla
+      this.$store.commit('loading/setLoading', this.load);
     },
   },
 };
