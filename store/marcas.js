@@ -5,13 +5,14 @@ export const state = () => ({
     offset: 2,
     buscar: ''
   })
-  
+
   //Actions
   export const actions = {
     async loadMarcas({ commit, state }, page) { // Obtiene todas las marcas y los carga a la tabla
         let url = '/marcas?page='+ page + '&buscar='+ state.buscar
         await this.$api.get(url)
         .then((response) => {
+          console.log(response)
           commit('setMarcas', response.data.marcas.data)
           commit('setPaginacion', response.data.pagination)
         })
@@ -24,7 +25,7 @@ export const state = () => ({
             commit('cambiarPagina', payload)
       }
   }
-  
+
   //Getters
   export const getters = {
     getMarcas(state){ return state.marcas },
@@ -37,12 +38,11 @@ export const state = () => ({
     setMarcas(state, marcas){
       state.marcas = marcas
     },
-    setPaginacion(state, accion) {
+    setPaginacion(state, accion) { //setea los datos desde la api a la variable paginaciòn del state
       state.paginacion = accion
     },
-    cambiarPagina: (state, payload) => {
+    setPagina: (state, payload) => { // cambia el numero de la pagina
       state.paginacion.current_page = payload
     }
   }
 
-  

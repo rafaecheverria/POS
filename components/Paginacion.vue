@@ -106,7 +106,7 @@ export default {
       },
       set(value) {
         let obj = {value: value, modulo: this.modulo}
-        this.$store.commit("setPagina", obj, { root:true })
+        this.$store.dispatch("cambiarPagina", obj)
       },
     },
   },
@@ -114,10 +114,7 @@ export default {
     cambiarPagina(payload) {
       this.change = payload;
       //this.$store.state[this.module].paginacion.current_page = page;
-      this.$store.dispatch(
-        this.loadFunction,
-        this.$store.state[this.module].paginacion.current_page
-      );
+      this.$store.dispatch(this.loadFunction,this.$store.state[this.module].paginacion.current_page);
       // this.$store.dispatch('loading/loading', this.load);
     },
   },

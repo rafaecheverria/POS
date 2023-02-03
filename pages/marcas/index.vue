@@ -81,6 +81,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
    mounted() {
+    console.log(this.paginacion.current_page)
     this.loadMarcas(this.paginacion.current_page);
   },
   computed: {
