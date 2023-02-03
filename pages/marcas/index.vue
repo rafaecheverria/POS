@@ -6,6 +6,7 @@
           <CrudCabecera title="Marcas" category="Table de Lista de Marcas"/> <!-- Componente cabecera de la tabla Marcas-->
           <div class="card-body">
             <Buscar/> <!-- Componente buscar marcas-->
+            <hr>
             <ListarMarcas /> <!-- Componente listar marcas-->
           </div>
         </div>

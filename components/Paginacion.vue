@@ -1,5 +1,5 @@
 <template>
-  <ul class="pagination">
+  <ul class="pagination-blue">
     <li
       class="page-item"
       v-if="$store.state[modulo].paginacion.current_page > 1"
