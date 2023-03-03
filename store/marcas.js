@@ -1,4 +1,5 @@
 import { getField, updateField } from 'vuex-map-fields';
+import Swal from 'sweetalert2';
 
 export const state = () => ({
   marcas: {},
@@ -8,9 +9,7 @@ export const state = () => ({
   buscar: '',
   loading: true,
   load: { loading: false, fullPage: false },
-  form: {
-    nombre: ''
-  }
+  formulario: {}
 })
 
 //Actions
@@ -19,7 +18,7 @@ export const actions = {
     let url = '/marcas?page=' + page + '&buscar=' + state.buscar
     await this.$api.get(url)
       .then((response) => {
-        console.log(response)
+       // console.log(response)
         commit('setMarcas', response.data.marcas.data)
         commit('setPaginacion', response.data.pagination)
         commit('loading/setLoading', state.load, { root: true })
@@ -28,6 +27,16 @@ export const actions = {
         console.log("se cerro la sesion")
       })
   },
+
+  async saveMarca({state}) { // Guarda las marcas
+    let url = 'marcas'
+    await this.$api.post(url, state.formulario)
+      .then((response) => {
+        commit('loading/setLoading', state.load, { root: true })
+        }).catch(error => {
+          console.log(error)
+      })
+  }
 }
 
 //Getters
@@ -36,7 +45,6 @@ export const getters = {
   getMarcas(state) { return state.marcas },
   getModulo(state) { return state.modulo },
   getPaginacion(state) { return state.paginacion },
-  getFormulario(state) { return state.form }
 }
 
 //Mutations
@@ -45,9 +53,6 @@ export const mutations = {
   setMarcas(state, marcas) { state.marcas = marcas },
   setPaginacion(state, accion) { state.paginacion = accion }, //setea los datos desde la api a la variable paginación del state
   setPagina: (state, payload) => { state.paginacion.current_page = payload }, // cambia el numero de la pagina al hacer click
-  setFormulario: (state, payload) => { state.form = payload } // cambia el numero de la pagina al hacer click
-
-
-
+  setFormulario: (state, payload) => { state.formulario = payload } // cambia el numero de la pagina al hacer click
 }
 
