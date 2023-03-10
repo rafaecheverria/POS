@@ -28,7 +28,7 @@ export const actions = {
       })
   },
 
-  async saveMarca({state}) { // Guarda las marcas
+  async saveMarca({commit, state}) { // Guarda las marcas
     let url = 'marcas'
     await this.$api.post(url, state.formulario)
       .then((response) => {

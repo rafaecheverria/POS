@@ -10,19 +10,21 @@
                 <label for="">Ingresar Marca</label>
                 <input type="text" class="form-control" name="nombre" v-model="form.nombre"/>
               </div>
-
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12">
                     <button class="btn btn-primary w-100">Guardar</button>
                   </div>
-                  <div class="col-6">
-                    <button class="btn btn-danger w-100" @click="$router.back()">
-                      Regresar
-                    </button>
-                  </div>
+                 
                 </div>
-    
           </form>
+
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-danger w-100" @click="$router.back()">
+                Regresar
+              </button>
+            </div>
+          </div>
 
           {{ form.nombre }}
           </div>
@@ -32,13 +34,11 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations } from 'vuex';
-import { mapFields } from 'vuex-map-fields'
-import Swal from 'sweetalert2';
+import { mapActions, mapMutations, mapState} from 'vuex';
 export default {
 
   computed: {
-    ...mapFields('marcas', ['formulario']),
+    ...mapState('alertas', ['pregunta', 'guardado']),
   },
   data() {
     return {
@@ -57,59 +57,18 @@ export default {
       setFormulario: 'marcas/setFomulario',
     }),
 
-    async guardar(){
-      //
-     /* Swal.fire({
-            title: 'Are you sure?',
-            text: `You won't be able to revert this!`,
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonClass: 'btn btn-success btn-fill',
-            cancelButtonClass: 'btn btn-danger btn-fill',
-            confirmButtonText: 'Yes, delete it!',
-            buttonsStyling: false
-          }).then(function () {
-              this.saveMarca()
-              this.$router.back()
-            Swal.fire({
-              title: 'Deleted!',
-              text: 'Your file has been deleted.',
-              type: 'success',
-              confirmButtonClass: 'btn btn-success btn-fill',
-              buttonsStyling: false
-            })
-          })*/
-
-          Swal.fire({
-            title: '¿Esta seguro de guardar este registro?',
-            text: `No podra revertir los cambios!`,
-            type: 'question',
-            showCancelButton: true,
-            confirmButtonClass: 'btn btn-success btn-fill',
-            cancelButtonClass: 'btn btn-danger btn-fill',
-            confirmButtonText: 'Yes, delete it!',
-            buttonsStyling: false,
-          }).then((result) => {
-            console.log(result)
-          if (result.value) {
+     guardar(){
+      this.$swal.fire(this.pregunta).then((result) => {
+        if (result.value) {
             this.$store.commit('marcas/setFormulario', this.form)
             this.saveMarca().then(() =>{
-              this.$router.back()
-              Swal.fire({
-              title: 'Guardado!',
-              text: 'Su registro fue guarado exitosamente!.',
-              type: 'success',
-              confirmButtonClass: 'btn btn-success btn-fill',
-              buttonsStyling: false
-            })
-              }).catch((err) => {
-              console.log(err)
-            })
-          }
-        })
-
-      
-      
+            this.$router.back()
+          this.$swal.fire(this.guardado)
+            }).catch((err) => {
+            console.log(err)
+          })
+        }
+      })
     }
   }
 };

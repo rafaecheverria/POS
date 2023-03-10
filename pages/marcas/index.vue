@@ -3,14 +3,14 @@
     <div slot="body">
       <div class="vld-parent col-lg-6">
         <div class="card">
-          <CrudCabecera title="Marcas" category="Table de Lista de Marcas"/> <!-- Componente cabecera de la tabla Marcas-->
+          <CrudCabecera title="Marcas" category="Tabla de Lista de Marcas"/> <!-- Componente cabecera de la tabla Marcas-->
           <div class="card-body">
             <Buscar/> <!-- Componente buscar marcas-->
             <hr>
             <ListarMarcas /> <!-- Componente listar marcas-->
           </div>
         </div>
-        <BaseLoading />
+        <BaseLoading /> <!-- Componente Loading -->
       </div>
     </div>
   </AdminTemplate>

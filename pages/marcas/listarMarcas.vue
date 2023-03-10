@@ -7,7 +7,7 @@
         <tr>
           <th>#</th>
           <th>Nombre</th>
-          <th class="text-right">Actions</th>
+          <th class="text-right">Acciones</th>
         </tr>
       </thead>
       <tbody>
