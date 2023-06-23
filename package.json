@@ -20,5 +20,7 @@
     "vue-template-compiler": "^2.7.10",
     "vuex-map-fields": "^1.4.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass": "^1.63.4"
+  }
 }

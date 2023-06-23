@@ -6,14 +6,13 @@
       </div>
 
       <div class="col-md-3">
-        <nuxtLink to="/marcas/agregar">
-          <button type="button" class="btn btn-wd btn-primary">
+       
+          <button type="button" @click="agregar()" class="btn btn-wd btn-primary">
             <span class="btn-label">
               <i class="fa fa-plus"></i>
             </span>
             Añadir Marca
           </button>
-        </nuxtLink>
       </div>
     </div>
   </div>
@@ -37,12 +36,19 @@ export default {
   methods: {
     ...mapActions({
       loadMarcas: "marcas/loadMarcas", // Trae todos los usuarios
-      loading: "loading/loading",
+      tipoAccion:  "marcas/cambiarAccion",
+      limpiarFormulario: "marcas/clearFormulario",
+      loading: "loading/loading"
     }),
     search(page) {
       this.loading(this.cargando);
       this.loadMarcas(page);
     },
+     agregar() {
+          this.tipoAccion(1)
+          this.limpiarFormulario()
+          this.$router.push("marcas/form")
+      },
   },
 };
 </script>
